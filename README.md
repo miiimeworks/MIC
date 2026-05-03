@@ -153,18 +153,18 @@ Win32 API(`BeginUpdateResource` / `UpdateResource` / `EndUpdateResource`)를 직
 
 ## 🛡️ Security & Anti-virus Info
 
-### [✅ VirusTotal Analysis Report](https://www.virustotal.com/gui/file/a6dc120df10faa31dfe79bec826d8fc7befa9f8fe05646c2be06f0985b832de2?nocache=1)
+### [✅ VirusTotal Analysis Report](https://www.virustotal.com/gui/file/63b4fc4ddddea8f06b16c5419ddcfb3f982143cf0342f205aadeceac42288c64?nocache=1)
 
 | Status             | Details                                                                        |
 |:------------------ |:------------------------------------------------------------------------------ |
 | **Major Vendors**  | **Clean** (Passed by AhnLab V3, Kaspersky, Avast, ESET, etc.)                  |
-| **Detection Rate** | **10 / 72** (Mostly Heuristic/Generic/Trojan-type flags)                       |
+| **Detection Rate** | **6 / 72** (Mostly Heuristic/Generic/Trojan-type flags)                       |
 | **Integrity**      | The source code is transparently available for verification in this repository |
 
 > This program was created with AutoIt. Some antivirus programs may incorrectly detect it as a virus.  
 > 본 프로그램은 AutoIt으로 제작되었습니다. 일부 백신이 바이러스로 오진할 수 있습니다.
 
-**File Checksum (SHA-256):** `a6dc120df10faa31dfe79bec826d8fc7befa9f8fe05646c2be06f0985b832de2`
+**File Checksum (SHA-256):** `63b4fc4ddddea8f06b16c5419ddcfb3f982143cf0342f205aadeceac42288c64`
 
 ---
 
