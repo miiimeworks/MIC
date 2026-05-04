@@ -32,7 +32,7 @@ ResourceHacker를 기반으로 작동합니다.
 ### 2. Directory Structure
 
 ```text
-MIIIMEIconChanger2/
+MIIIMEIconChanger/
  │
  ├─ MIIIMEIconChanger.exe         # Executable /  실행 파일
  ├─ MIIIMEIconChanger.ini         # Configuration /  설정 파일
@@ -96,8 +96,8 @@ Updates the **FileDescription** field to match the filename (without extension) 
 
 ## INI Configuration Reference
 
-Settings are stored in `MIIIMEIconChanger2.ini`. The file is auto-created with defaults on first launch.  
-설정은 `MIIIMEIconChanger2.ini`에 저장됨. 최초 실행 시 기본값으로 자동 생성.
+Settings are stored in `MIIIMEIconChanger.ini`. The file is auto-created with defaults on first launch.  
+설정은 `MIIIMEIconChanger.ini`에 저장됨. 최초 실행 시 기본값으로 자동 생성.
 
 ### [ExtractConfig]
 
