@@ -37,8 +37,8 @@ MIIIMEIconChanger/
  ├─ MIIIMEIconChanger.exe         # Executable /  실행 파일
  ├─ MIIIMEIconChanger.ini         # Configuration /  설정 파일
  │
- └─ App/                           # Core Files  / 핵심 파일
-    └─ ResourceHacker/             # ResourceHacker.exe / 리소스해커
+ └─ App/                          # Core Files  / 핵심 파일
+    └─ ResourceHacker/            # ResourceHacker.exe / 리소스해커
 ```
 
 ---
