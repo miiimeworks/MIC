@@ -182,8 +182,8 @@ This is a **private project**. No technical support is provided.
 
 **Developer** : MIIIME  
 **Website** : https://www.miiime.com  
-**GitHub** : [@miiime6248](https://github.com/miiime6248)  
-**Last Update** : 2026-05-01  
+**GitHub** : [@miiimeworks](https://github.com/miiimeworks)  
+**Last Update** : 2026-05-04   
 
 <br>
 <img width="64" height="64" alt="002" src="https://github.com/miiimeworks/M4T/blob/main/4bit_Brutal/Logo/Neon/4b_Mium_64_0_G.png?raw=true">  

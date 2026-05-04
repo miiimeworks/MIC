@@ -91,5 +91,5 @@ This is a private project. No technical support is provided.
 
 Developer	: MIIIME 
 Website		: https://www.miiime.com 
-GitHub		: @miiime6248 
+GitHub		: @miiimeworks 
 Update		: 2026.03.15
