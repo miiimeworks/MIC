@@ -77,11 +77,14 @@ EXE 파일에 내장된 아이콘을 추출하여 `.ico` 파일로 저장.
 | **Light** (default) | Tries only 3 standard IDs: `MAINICON`, `1`, `101`. Fast and sufficient for most standard EXEs. |
 | **Deep** | Queries all existing resource IDs via `ResourceHacker -action list`, then extracts each one accurately. Falls back to smart brute-force if the query fails. Slower but handles non-standard EXEs. |
 
+---
+
 ### Change Icon
 
 Replaces the icon embedded in an EXE file with a specified `.ico` file using ResourceHacker.  
 ResourceHacker를 사용하여 EXE 파일에 내장된 아이콘을 지정한 `.ico` 파일로 교체.
 
+---
 
 ### Change Description
 
