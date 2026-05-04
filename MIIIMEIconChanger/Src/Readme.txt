@@ -2,10 +2,10 @@
              MIIIME Icon Changer (MIC™)
 ========================================================================
 
-MIIIMEIconChanger is a GUI tool that extracts or replaces icons (.ico) of executable files (.exe). 
+A tool to extract or replace the icon (.ico) of an executable file (.exe).   
 It works based on ResourceHacker.
 
-미메아이콘체인저는 실행 파일(.exe)의 아이콘(.ico)을 추출하거나 교체하는 GUI 도구입니다.  
+실행 파일(.exe)의 아이콘(.ico)을 추출하거나 교체하는 GUI 도구입니다.  
 ResourceHacker를 기반으로 작동합니다.  
 
 ========================================================================

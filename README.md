@@ -10,10 +10,10 @@ MIIIMEIconChanger · 미메아이콘체인저
 <img width="559" height="136" alt="001" src="https://github.com/miiimeworks/M4T/blob/main/4bit_Enhanced/Id/Neon/4b_136_1_G.png?raw=true" style="margin-top: 20px; margin-bottom: 20px;">
 <br>
 
-MIIIMEIconChanger is a tool that extracts or replaces icons (.ico) of executable files (.exe).  
+A tool to extract or replace the icon (.ico) of an executable file (.exe).   
 It works based on ResourceHacker.
 
-미메아이콘체인저는 실행 파일(.exe)의 아이콘(.ico)을 추출하거나 교체하는 도구입니다.  
+실행 파일(.exe)의 아이콘(.ico)을 추출하거나 교체하는 도구입니다.  
 ResourceHacker를 기반으로 작동합니다.
 
 <br>
