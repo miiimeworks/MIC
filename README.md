@@ -78,10 +78,10 @@ EXE 파일에 내장된 아이콘을 추출하여 `.ico` 파일로 저장.
 Replaces the icon embedded in an EXE file with a specified `.ico` file using ResourceHacker.  
 ResourceHacker를 사용하여 EXE 파일에 내장된 아이콘을 지정한 `.ico` 파일로 교체.
 
-### Change Description
+### Change Description & ProductName 
 
-Updates the **FileDescription** field to match the filename (without extension) after the icon is replaced.  
-아이콘 교체 후 EXE의 **FileDescription** 필드를 파일명(확장자 제외)과 동일하게 변경.
+Updates the **FileDescription** & **ProductName** fields to match the filename (without extension) after the icon is replaced.  
+아이콘 교체 후 EXE의 **FileDescription**, **ProductName** 필드를 파일명(확장자 제외)과 동일하게 변경.
 
 ---
 
@@ -136,12 +136,12 @@ If ID enumeration fails, automatically falls back to a smart brute-force scan (I
 `ResourceHacker -action list`로 실제 리소스 ID를 열거한 후 추출.  
 ID 열거 실패 시 스마트 브루트포스(ID 범위 1~500, `DeepModeGap` 기반 조기 종료)로 자동 전환.
 
-### 3. Change Description — Win32 API Patch
+### 3. Change Description & ProductName — Win32 API Patch
 
-Patches the `FileDescription` field directly in the `VERSIONINFO` binary resource using Win32 API calls (`BeginUpdateResource` / `UpdateResource` / `EndUpdateResource`).  
+Patches the `FileDescription`  & `ProductName` fields directly in the `VERSIONINFO` binary resource using Win32 API calls (`BeginUpdateResource` / `UpdateResource` / `EndUpdateResource`).  
 
-**[Change Description — Win32 API 패치]**  
-Win32 API(`BeginUpdateResource` / `UpdateResource` / `EndUpdateResource`)를 직접 호출하여 `VERSIONINFO` 바이너리 리소스 내 `FileDescription` 필드를 패치.  
+**[파일 설명, 제품 이름 교체  — Win32 API 패치]**  
+Win32 API(`BeginUpdateResource` / `UpdateResource` / `EndUpdateResource`)를 직접 호출하여 `VERSIONINFO` 바이너리 리소스 내 `파일 설명`, `제품 이름` 필드를 패치.  
 
 ---
 

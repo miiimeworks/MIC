@@ -67,13 +67,13 @@ If ID enumeration fails, automatically falls back to a smart brute-force scan
 `ResourceHacker -action list`로 실제 리소스 ID를 열거한 후 추출.  
 ID 열거 실패 시 스마트 브루트포스(ID 범위 1~500, `DeepModeGap` 기반 조기 종료)로 자동 전환.
 
-3. Change Description — Win32 API Patch 
-Patches the `FileDescription` field directly in the `VERSIONINFO` binary resource using Win32 API calls 
+3. Change Description & ProductName — Win32 API Patch 
+Patches the `FileDescription` & `ProductName` fields directly in the `VERSIONINFO` binary resource using Win32 API calls 
 (`BeginUpdateResource` / `UpdateResource` / `EndUpdateResource`).  
 
-[Change Description — Win32 API 패치]  
+[파일 설명, 제품 이름 교체 — Win32 API 패치]  
 Win32 API(`BeginUpdateResource` / `UpdateResource` / `EndUpdateResource`)를 직접 호출하여 
-`VERSIONINFO` 바이너리 리소스 내 `FileDescription` 필드를 패치.  
+`VERSIONINFO` 바이너리 리소스 내 `파일 설명`, `제품 이름` 필드를 패치.  
 
 ______________________________________________________________________________________________________________________
 
