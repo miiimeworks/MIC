@@ -147,7 +147,7 @@ Win32 API(`BeginUpdateResource` / `UpdateResource` / `EndUpdateResource`)를 직
 
 ## 🛡️ Security & Anti-virus Info
 
-### [✅ VirusTotal Analysis Report](https://www.virustotal.com/gui/file/63b4fc4ddddea8f06b16c5419ddcfb3f982143cf0342f205aadeceac42288c64?nocache=1)
+### [✅ VirusTotal Analysis Report](https://www.virustotal.com/gui/file/4c10ab1f169a1f1a9d4d2e213ea2ade0bf074dd6e7dbeccb4c04dbb139b0a7b8?nocache=1)
 
 | Status             | Details                                                                        |
 |:------------------ |:------------------------------------------------------------------------------ |
@@ -158,7 +158,7 @@ Win32 API(`BeginUpdateResource` / `UpdateResource` / `EndUpdateResource`)를 직
 > This program was created with AutoIt. Some antivirus programs may incorrectly detect it as a virus.  
 > 본 프로그램은 AutoIt으로 제작되었습니다. 일부 백신이 바이러스로 오진할 수 있습니다.
 
-**File Checksum (SHA-256):** `63b4fc4ddddea8f06b16c5419ddcfb3f982143cf0342f205aadeceac42288c64`
+**File Checksum (SHA-256):** `4c10ab1f169a1f1a9d4d2e213ea2ade0bf074dd6e7dbeccb4c04dbb139b0a7b8`
 
 ---
 
