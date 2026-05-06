@@ -17,7 +17,7 @@ It works based on ResourceHacker.
 ResourceHacker를 기반으로 작동합니다.
 
 <br>
-<img width="475" height="179" alt="001" src="https://github.com/miiimeworks/MIC/blob/main/Preview/001.png?raw=true" style="margin-top: 20px; margin-bottom: 20px;">  
+<img width="475" height="180" alt="001" src="https://github.com/miiimeworks/MIC/blob/main/Preview/001.png?raw=true" style="margin-top: 20px; margin-bottom: 20px;">  
 <br>
 
 ---
@@ -53,7 +53,6 @@ MIIIMEIconChanger/
 1. [EXE 파일 입력란]에 아이콘을 바꿀 실행 파일을 선택하거나 드래그.  
 2. [ICO 파일 입력란]에 적용할 새로운 아이콘 파일을 선택.  
 3. [Change Icon] 버튼을 클릭.  
-
 * 실행 파일과 아이콘 파일을 GUI 창으로 직접 드래그 앤 드롭하여 입력할 수 있음.  
 * 프로그램 실행을 위해서는 `App\ResourceHacker\` 폴더 내에 실행 파일이 반드시 존재해야 함.
 
@@ -78,7 +77,7 @@ EXE 파일에 내장된 아이콘을 추출하여 `.ico` 파일로 저장.
 Replaces the icon embedded in an EXE file with a specified `.ico` file using ResourceHacker.  
 ResourceHacker를 사용하여 EXE 파일에 내장된 아이콘을 지정한 `.ico` 파일로 교체.
 
-### Change Description & ProductName 
+### Change Description & ProductName
 
 Updates the **FileDescription** & **ProductName** fields to match the filename (without extension) after the icon is replaced.  
 아이콘 교체 후 EXE의 **FileDescription**, **ProductName** 필드를 파일명(확장자 제외)과 동일하게 변경.
