@@ -11,10 +11,10 @@ MIIIMEIconChanger · 미메아이콘체인저
 <br>
 
 A tool to extract or replace the icon (.ico) of an executable file (.exe).   
-It works based on ResourceHacker.
+Icons are extracted via Win32 API; icon replacement works based on ResourceHacker.
 
 실행 파일(.exe)의 아이콘(.ico)을 추출하거나 교체하는 도구입니다.  
-ResourceHacker를 기반으로 작동합니다.
+아이콘 추출은 Win32 API로, 아이콘 교체는 ResourceHacker를 기반으로 작동합니다.
 
 <br>
 <img width="475" height="180" alt="001" src="https://github.com/miiimeworks/MIC/blob/main/Preview/001.png?raw=true" style="margin-top: 20px; margin-bottom: 20px;">  
@@ -26,8 +26,8 @@ ResourceHacker를 기반으로 작동합니다.
 
 ### 1. Setup
 
-- Download **[ResourceHacker]** and place it in the `App/ResourceHacker/` path.  
-- [ResourceHacker]를 다운받아 `App/ResourceHacker/` 경로에 배치.
+- Download **[ResourceHacker]** and place it in the `App/ResourceHacker/` path. (Required for icon replacement only)  
+- [ResourceHacker]를 다운받아 `App/ResourceHacker/` 경로에 배치. (아이콘 교체에만 필요)
 
 ### 2. Directory Structure
 
@@ -49,12 +49,12 @@ MIIIMEIconChanger/
 2. Select the new icon file to be applied in the **[ICO File]** input field.  
 3. Click the **[Change Icon]** button.  
 * You can input both the executable and icon files by dragging and dropping them directly into the GUI window.  
-* The ResourceHacker executable must be present in the `App\ResourceHacker\` folder for the program to function.
+* The ResourceHacker executable must be present in the `App\ResourceHacker\` folder to replace icons. (Not required for extraction)
 1. [EXE 파일 입력란]에 아이콘을 바꿀 실행 파일을 선택하거나 드래그.  
 2. [ICO 파일 입력란]에 적용할 새로운 아이콘 파일을 선택.  
 3. [Change Icon] 버튼을 클릭.  
 * 실행 파일과 아이콘 파일을 GUI 창으로 직접 드래그 앤 드롭하여 입력할 수 있음.  
-* 프로그램 실행을 위해서는 `App\ResourceHacker\` 폴더 내에 실행 파일이 반드시 존재해야 함.
+* 아이콘 교체를 위해서는 `App\ResourceHacker\` 폴더 내에 실행 파일이 반드시 존재해야 함. (추출에는 불필요)
 
 ---
 
@@ -65,12 +65,8 @@ MIIIMEIconChanger/
 Extracts the icon(s) embedded in an EXE file and saves them as `.ico` files.  
 EXE 파일에 내장된 아이콘을 추출하여 `.ico` 파일로 저장.
 
-**Extraction Mode (INI: `ExtractionMode`)**
-
-| Mode                | Description                                                                                                                                                                                       |
-|:-------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Light** (default) | Tries only 3 standard IDs: `MAINICON`, `1`, `101`. Fast and sufficient for most standard EXEs.                                                                                                    |
-| **Deep**            | Queries all existing resource IDs via `ResourceHacker -action list`, then extracts each one accurately. Falls back to smart brute-force if the query fails. Slower but handles non-standard EXEs. |
+Reads the EXE directly through the Win32 API (`EnumResourceNamesW`) without any external tool, so extraction is nearly instant for any EXE.  
+외부 도구 없이 Win32 API(`EnumResourceNamesW`)로 EXE를 직접 읽으므로 어떤 EXE든 거의 즉시 추출.
 
 ### Change Icon
 
@@ -96,7 +92,6 @@ Settings are stored in `MIIIMEIconChanger.ini`. The file is auto-created with de
 | `NamingRule`     | `1` / `2` | `2`     | `1` = Save as resource ID name (e.g., `MAINICON.ico`)<br>`2` = Save based on EXE filename (e.g., `AppName_001.ico`) |
 | `ExtractMethod`  | `1` / `2` | `2`     | `1` = Extract all icons<br>`2` = Extract first icon only                                                            |
 | `SaveMethod`     | `1` / `2` | `1`     | `1` = Auto-save in the same folder as the EXE<br>`2` = Manually specify the save path (dialog)                      |
-| `ExtractionMode` | `1` / `2` | `1`     | `1` = Light (fast)<br>`2` = Deep (accurate, slower)                                                                 |
 
 ### [Options]
 
@@ -104,6 +99,7 @@ Settings are stored in `MIIIMEIconChanger.ini`. The file is auto-created with de
 |:-------------------- |:--------------- |:-------:|:---------------------------------------------------------------- |
 | `BackupBeforeChange` | `0` / `1`       | `1`     | `1` = Create `.bak` backup before replacing icon                 |
 | `ChangeDescription`  | `0` / `1`       | `0`     | `1` = Update FileDescription to match filename after icon change |
+| `ChangeProductName`  | `0` / `1`       | `0`     | `1` = Update ProductName to match filename after icon change     |
 | `LogLevel`           | `0` / `1` / `2` | `0`     | `0` = Disabled · `1` = INFO/WARN/ERROR · `2` = All (+ DEBUG)     |
 
 ### [Advanced]
@@ -111,7 +107,6 @@ Settings are stored in `MIIIMEIconChanger.ini`. The file is auto-created with de
 | Key               | Default   | Description                                                              |
 |:----------------- |:---------:|:------------------------------------------------------------------------ |
 | `LogRotationSize` | `5242880` | Max log file size in bytes (5 MB). Rotates to `.log.old` when exceeded.  |
-| `DeepModeGap`     | `20`      | Consecutive failures allowed before early stop in Deep mode brute-force. |
 
 ---
 
@@ -126,14 +121,14 @@ If backup creation fails due to permission issues, a warning message is displaye
 아이콘 교체 전 동일 위치에 `<파일명>.exe.bak` 파일로 원본을 복사.  
 권한 문제로 백업 생성이 실패할 경우 경고 메시지를 표시하고 작업을 중단.
 
-### 2. Icon Extraction — Deep Mode
+### 2. Icon Extraction — Win32 API
 
-Uses `ResourceHacker -action list` to enumerate actual resource IDs before extraction.  
-If ID enumeration fails, automatically falls back to a smart brute-force scan (ID range 1–500) with early termination controlled by `DeepModeGap`.
+Loads the EXE as a read-only data file and enumerates icon groups with `EnumResourceNamesW(RT_GROUP_ICON)`.  
+Each group's `RT_ICON` images are assembled into a standard `.ico` file directly. The enumeration order (named resources first, then numeric IDs ascending) defines the "first icon".
 
-**[아이콘 추출 — Deep 모드]**  
-`ResourceHacker -action list`로 실제 리소스 ID를 열거한 후 추출.  
-ID 열거 실패 시 스마트 브루트포스(ID 범위 1~500, `DeepModeGap` 기반 조기 종료)로 자동 전환.
+**[아이콘 추출 — Win32 API]**  
+EXE를 읽기 전용 데이터 파일로 로드하고 `EnumResourceNamesW(RT_GROUP_ICON)`로 아이콘 그룹을 열거.  
+각 그룹의 `RT_ICON` 이미지를 직접 조립하여 표준 `.ico` 파일로 저장. 열거 순서(문자열 이름 우선, 이후 숫자 ID 오름차순)가 "첫 번째 아이콘"의 기준.
 
 ### 3. Change Description & ProductName — Win32 API Patch
 
@@ -176,7 +171,7 @@ This is a **private project**. No technical support is provided.
 **Developer** : MIIIME  
 **Website** : https://www.miiime.com  
 **GitHub** : [@miiimeworks](https://github.com/miiimeworks)  
-**Last Update** : 2026-05-04   
+**Last Update** : 2026-10-30   
 
 <br>
 <img width="64" height="64" alt="002" src="https://github.com/miiimeworks/M4T/blob/main/4bit_Brutal/Logo/Neon/4b_Mium_64_0_G.png?raw=true">  

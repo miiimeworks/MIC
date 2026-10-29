@@ -3,18 +3,18 @@
 ========================================================================
 
 A tool to extract or replace the icon (.ico) of an executable file (.exe).   
-It works based on ResourceHacker.
+Icons are extracted via Win32 API; icon replacement works based on ResourceHacker.
 
 실행 파일(.exe)의 아이콘(.ico)을 추출하거나 교체하는 GUI 도구입니다.  
-ResourceHacker를 기반으로 작동합니다.  
+아이콘 추출은 Win32 API로, 아이콘 교체는 ResourceHacker를 기반으로 작동합니다.  
 
 ========================================================================
 [Configuration]
 ========================================================================
 
 1. Setup
-   - Download [ResourceHacker] and place it in the App/ResourceHacker/ path.
-   - [ResourceHacker]를 다운받아 App/ResourceHacker/ 경로에 배치.
+   - Download [ResourceHacker] and place it in the App/ResourceHacker/ path. (Required for icon replacement only)
+   - [ResourceHacker]를 다운받아 App/ResourceHacker/ 경로에 배치. (아이콘 교체에만 필요)
    
 ========================================================================
 2. Directory Structure 
@@ -37,14 +37,14 @@ MIIIMEIconChanger2
 3. Click the **[Replace Icon]** button.  
 4. After the process is complete, verify the newly created **"_backup.exe"** file. 
 * You can input both the executable and icon files by dragging and dropping them directly into the GUI window.  
-* The ResourceHacker executable must be present in the `[App\ResourceHacker]` folder for the program to function. 
+* The ResourceHacker executable must be present in the `[App\ResourceHacker]` folder to replace icons. (Not required for extraction)
 
 1. EXE 파일 입력란]에 아이콘을 바꿀 실행 파일을 선택하거나 드래그.  
 2. ICO 파일 입력란]에 적용할 새로운 아이콘 파일을 선택.  
 3. [아이콘 교체 실행] 버튼을 클릭.  
 4. 작업 완료 후 생성된 "_backup.exe" 파일을 확인.  
 * 실행 파일과 아이콘 파일을 GUI 창으로 직접 드래그 앤 드롭하여 입력할 수 있음.
-* 프로그램 실행을 위해서는 [App\ResourceHacker] 폴더 내에 실행 파일이 반드시 존재해야 함.
+* 아이콘 교체를 위해서는 [App\ResourceHacker] 폴더 내에 실행 파일이 반드시 존재해야 함. (추출에는 불필요)
 
 ========================================================================
 [Technical Notes]
@@ -58,14 +58,16 @@ If backup creation fails due to permission issues, a warning message is displaye
 아이콘 교체 전 동일 위치에 `<파일명>.exe.bak` 파일로 원본을 복사.  
 권한 문제로 백업 생성이 실패할 경우 경고 메시지를 표시하고 작업을 중단.
 
-2. Icon Extraction — Deep Mode
-Uses `ResourceHacker -action list` to enumerate actual resource IDs before extraction.  
-If ID enumeration fails, automatically falls back to a smart brute-force scan 
-(ID range 1–500) with early termination controlled by `DeepModeGap`.
+2. Icon Extraction — Win32 API
+Reads the EXE as a read-only data file and enumerates icon groups with `EnumResourceNamesW(RT_GROUP_ICON)`.  
+Each group's `RT_ICON` images are assembled into a standard `.ico` file directly, so no external tool is needed 
+and extraction completes almost instantly. The enumeration order (named resources first, then numeric IDs ascending) 
+defines the "first icon".
 
-[아이콘 추출 — Deep 모드]
-`ResourceHacker -action list`로 실제 리소스 ID를 열거한 후 추출.  
-ID 열거 실패 시 스마트 브루트포스(ID 범위 1~500, `DeepModeGap` 기반 조기 종료)로 자동 전환.
+[아이콘 추출 — Win32 API]
+EXE를 읽기 전용 데이터 파일로 로드하고 `EnumResourceNamesW(RT_GROUP_ICON)`로 아이콘 그룹을 열거.  
+각 그룹의 `RT_ICON` 이미지를 직접 조립하여 표준 `.ico` 파일로 저장하므로 외부 도구가 필요 없으며 거의 즉시 완료.  
+열거 순서(문자열 이름 우선, 이후 숫자 ID 오름차순)가 "첫 번째 아이콘"의 기준.
 
 3. Change Description & ProductName — Win32 API Patch 
 Patches the `FileDescription` & `ProductName` fields directly in the `VERSIONINFO` binary resource using Win32 API calls 
@@ -92,4 +94,4 @@ This is a private project. No technical support is provided.
 Developer	: MIIIME 
 Website		: https://www.miiime.com 
 GitHub		: @miiimeworks 
-Update		: 2026.03.15
+Update		: 2026.10.30
